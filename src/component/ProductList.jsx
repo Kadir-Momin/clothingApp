@@ -3,6 +3,7 @@ import axios from "axios";
 
 import Product from "./Product";
 import { useDispatch } from "react-redux";
+// import { ADD_TO_CART } from "../reduxToolkit/cartSlice";
 import { addToCart } from "../redux/actions/cart-actions";
 
 
@@ -28,6 +29,10 @@ const ProductList = () => {
         dispatch(addToCart(product))
     }
 
+    // const addFavourite = (product) => {
+    //     dispatch(addToFavourite(product))
+    // }
+
     return (
         <div className="container">
             <h2 className="text-center">All Products</h2>
@@ -41,7 +46,9 @@ const ProductList = () => {
                      image= {product.image}
                      title={product.title}
                      id={product.id} 
-                     displayProduct= {displayProduct} /> 
+                     displayProduct= {displayProduct}
+                    //  addFavourite= {addFavourite} 
+                    /> 
                 })
                 }
 

@@ -4,6 +4,7 @@ import Navbar from "./Navbar";
 import { useParams } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { addToCart } from "../redux/actions/cart-actions";
+import { Link } from "react-router-dom";
 
 
 const SubCategory = () => {
@@ -32,7 +33,7 @@ const SubCategory = () => {
     return (
         <>
             <Navbar />
-            <div className="text-center">SubCategory</div>
+            <div className="text-center"></div>
             <div className="row">
                 {
                     subCategory.map((cartProduct) => (
@@ -46,11 +47,11 @@ const SubCategory = () => {
                                     />
                                     <h5 className="card-title">{cartProduct.title}</h5>
                                     <p className="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                                    <a
-                                     href="#" 
+                                    <Link
+                                     to={'/products/' + cartProduct.id} 
                                      className="btn btn-primary btn-block" 
                                      
-                                    >Add to Cart</a>
+                                    >Product Detail</Link>
                                 </div>
                             </div>
                         </div>

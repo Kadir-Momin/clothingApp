@@ -5,6 +5,8 @@ import Navbar from "../component/Navbar";
 import { useDispatch } from 'react-redux'
 import { addToCart } from '../redux/actions/cart-actions'
 import { useParams } from "react-router-dom";
+import { addToFavourite } from '../redux/actions/fav-actions'
+
 
 
 
@@ -17,9 +19,14 @@ const ProductDetailPage = () => {
     const [ product, setProduct ] = useState({})
 
     const dispatch = useDispatch()
+    const dispatch1 = useDispatch()
 
     const onClickHandler = () => {
         dispatch(addToCart(product))
+    }
+
+    const favouriteHandler = () => {
+        dispatch1(addToFavourite(product))
     }
 
     const getData = () => {
@@ -65,8 +72,10 @@ const ProductDetailPage = () => {
                             <span style={{ fontSize: 20 }}>&#36; </span>
                             <small style={{ fontSize: 20 }}>{product.price}</small>
                         </h2>
-
-                        <button className="btn btn-primary" onClick={onClickHandler}>Add to cart</button>
+                        <div className="product-btn">
+                            <button className="btn btn-primary" onClick={onClickHandler}>Add to cart</button>
+                            <button className="btn btn-primary" onClick={favouriteHandler}>Add to Favourite</button>
+                        </div>
                 </div>
             </div>
         </div>

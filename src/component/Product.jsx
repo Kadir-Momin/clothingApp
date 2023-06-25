@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 
 
 
-const Product = ({ displayProduct, rating, price, image, title, product, id}) => {
+const Product = ({ displayProduct, rating, price, image, title, product, id, addFavourite}) => {
     // const {  rating, price, image, title } = props.data
 
     
@@ -11,7 +11,9 @@ const Product = ({ displayProduct, rating, price, image, title, product, id}) =>
         displayProduct(product)
     }
     
-   
+   const favouriteHandler = () => {
+        addFavourite(product)
+   }
     
     return (
         <div className="col-sm-3">
@@ -40,8 +42,9 @@ const Product = ({ displayProduct, rating, price, image, title, product, id}) =>
                         <span style={{ fontSize: 20 }}>&#36; </span>
                         <small style={{ fontSize: 20 }}>{price}</small>
                     </p>
-                    <Link to={'/products/' + id} className="btn btn-primary btn-block">Product Details</Link>
+                    <Link to={'/products/' + id} className="btn btn-primary btn-block">Product Detail</Link>
                     <a href="#" className="btn btn-primary btn-block" onClick={onClickHandler}>Add to Cart</a>
+                    <a href="" className="btn btn-primary btn-block" onClick={favouriteHandler}>Add to Favourite</a>
                 </div>
             </div>
         </div>

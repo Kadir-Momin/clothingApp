@@ -1,25 +1,24 @@
 import { ActionTypes } from "../constants/action-types"
 
-const initialState = {
-    numberCart : 0,
-    carts: [],
+const initialState1 = {
+    numberCart1 : 0,
+    carts1: [],
 }
 
-
-export const cartReducer = ( state = initialState, {type, payload}) => {
+export const favReducer = ( state = initialState1, {type, payload}) => {
     switch(type) {
-        case ActionTypes.ADD_TO_CART :
-            if(state.numberCart === 0) {
+        case ActionTypes.ADD_TO_FAVOURITE :
+            if(state.numberCart1 === 0) {
                 let item = {
                     ...payload,
                     quantity: 1,
                 };
-                state.carts.push(item);
+                state.carts1.push(item);
             } else {
                 let check = false
-                state.carts.map((item, index) => {
+                state.carts1.map((item, index) => {
                     if(item.id === payload.id) {
-                        state.carts[index].quantity++
+                        state.carts1[index].quantity++
                         check = true
                     }
                 })
@@ -28,25 +27,25 @@ export const cartReducer = ( state = initialState, {type, payload}) => {
                         ...payload,
                         quantity: 1
                     }
-                    state.carts.push(_item)
+                    state.carts1.push(_item)
                 }
             }
             return {
                 ...state,
-                numberCart: state.numberCart + 1
+                numberCart: state.numberCart1 + 1
               
                 
             };
 
         case ActionTypes.DELETE_ITEM : 
-            state.carts.map((item) => {
+            state.carts1.map((item) => {
                 if(item.id === payload.id) {
-                    state.carts.push(item)
+                    state.carts1.pop(item)
                 }
             })
             return {
                 ...state,
-                numberCart: state.numberCart - 1
+                numberCart1: state.numberCart1 - 1
             }
         ;
 

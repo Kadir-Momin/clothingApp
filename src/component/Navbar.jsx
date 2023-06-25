@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react"
+import { useSelector } from "react-redux"
 import { Link, useNavigate } from "react-router-dom"
 
 
@@ -31,17 +32,30 @@ const Navbar = () => {
         navigate('/'+menu)
     }
 
+   const carts = useSelector(state => state.carts)
+
     return (
         <nav className="nav-main">
             <div className="nav-1">
                 <Link className="navbar-brand" to={'/'}>
                     <small className="small-1">SHOP</small><small className="small-2 text-dark">LANE</small>
                 </Link>
-
+            <div className="nav-button">
                 {loginStatus ? (
+                    <>
                     <Link
-                    className="btn btn-danger"
-                    onClick={handleLogout}> Logout </Link>
+                        className="btn btn-danger"
+                        onClick={handleLogout}> Logout </Link>
+                    <Link
+                        className="btn btn-primary cart-container"
+                        to={"/cart"}
+                        >Cart {carts.length}</Link>
+                        
+                    <Link
+                        className="btn btn-primary"
+                        to={"/favourite"}
+                        >Favourite</Link>
+                    </>
                 ) : (
                     <ul className="nav-dropdowns">
                     <li
@@ -61,7 +75,7 @@ const Navbar = () => {
                 )
                 }
                 
-                
+            </div>   
                 
             </div>
             <hr />
